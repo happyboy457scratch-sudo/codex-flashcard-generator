@@ -3,85 +3,152 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flashcard Teleporter</title>
+  <title>StudySpark - Flashcard Generator</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="browser-chrome">studyspark.app</div>
+
+  <div class="promo-bar">
+    <span>Ideas → Web (0 Code)</span>
+    <button type="button" class="promo-btn">Try Now</button>
+  </div>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-icon">✧</span>
+      <span>StudySpark</span>
+    </div>
+    <div class="header-actions">
+      <span class="credits-pill">23 credits</span>
+      <button type="button" class="upgrade-btn">Upgrade</button>
+      <span class="username">Happyboy457</span>
+    </div>
+  </header>
+
   <main>
     <section id="login-screen" class="screen active" aria-labelledby="login-title">
-      <h1 id="login-title">Welcome Back</h1>
-      <p>Log in with your email to generate and study flashcards.</p>
+      <article class="auth-card">
+        <h1 class="logo-title"><span class="mint">✧</span> StudySpark</h1>
+        <h2 id="login-title">Welcome Back</h2>
+        <p>Log in to access your study materials</p>
 
-      <form id="email-form" autocomplete="off">
-        <label for="email-input">Email</label>
-        <input id="email-input" type="email" placeholder="you@example.com" required />
-        <button type="submit">Send Verification Code</button>
-      </form>
+        <form id="email-form" autocomplete="off">
+          <label for="email-input">Email</label>
+          <input id="email-input" type="email" placeholder="your@email.com" required />
 
-      <form id="code-form" class="hidden" autocomplete="off">
-        <label for="code-input">Verification code</label>
-        <input id="code-input" type="text" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" placeholder="Enter 6-digit code" required />
-        <div class="auth-actions">
-          <button type="submit">Verify and Continue</button>
-          <button id="resend-code-btn" type="button">Resend Code</button>
-        </div>
-      </form>
+          <label for="password-input">Password</label>
+          <input id="password-input" type="password" placeholder="Enter your password" required />
 
-      <p id="verification-status" class="status-message" aria-live="polite"></p>
+          <button type="submit">Log In</button>
+        </form>
+
+        <form id="code-form" class="hidden" autocomplete="off">
+          <label for="code-input">Verification code</label>
+          <input id="code-input" type="text" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" placeholder="Enter 6-digit code" required />
+          <div class="auth-actions">
+            <button type="submit">Verify and Continue</button>
+            <button id="resend-code-btn" type="button">Resend Code</button>
+          </div>
+        </form>
+
+        <p id="verification-status" class="status-message" aria-live="polite"></p>
+        <p class="switch-auth">Don't have an account? <span class="mint">Sign up</span></p>
+      </article>
     </section>
 
     <section id="topic-screen" class="screen" aria-labelledby="topic-title">
-      <h1 id="topic-title">Flashcard Generator</h1>
-      <p>Type a topic below and jump into your flashcards.</p>
-      <form id="topic-form" autocomplete="off">
-        <label for="topic-input" class="visually-hidden">Flashcard topic</label>
-        <input id="topic-input" type="text" placeholder="Try: photosynthesis, WWII, JavaScript arrays..." required />
-        <button type="submit">Continue</button>
-      </form>
+      <h1 id="topic-title" class="section-title">Your Study Materials</h1>
+
+      <div class="dashboard-grid">
+        <article class="panel-card">
+          <h2><span class="mint">↥</span> Upload PDF</h2>
+          <p>Upload a PDF to automatically generate flashcards</p>
+          <label>Select PDF File</label>
+          <div class="fake-input">Choose File &nbsp;&nbsp;<span>no file selected</span></div>
+          <button type="button" class="muted-btn">Generate Flashcards (1 credit)</button>
+        </article>
+
+        <article class="panel-card">
+          <h2><span class="mint">✧</span> Generate with AI</h2>
+          <p>Enter a topic to generate flashcards</p>
+          <div class="tab-strip">
+            <span class="active-tab">Topic</span>
+            <span>Paste Text</span>
+          </div>
+
+          <form id="topic-form" autocomplete="off">
+            <label for="topic-input">Topic</label>
+            <input id="topic-input" type="text" placeholder="e.g., World War II, Photosynthesis, Python Loops" required />
+            <button type="submit">Generate Flashcards (1 credit)</button>
+          </form>
+        </article>
+      </div>
     </section>
 
     <section id="count-screen" class="screen" aria-labelledby="count-title">
-      <h2 id="count-title">How many flashcards do you want?</h2>
-      <p id="count-topic-text"></p>
-      <form id="count-form" autocomplete="off">
-        <label for="count-input">Choose an amount from 1 to 20</label>
-        <input id="count-input" type="number" min="1" max="20" required />
-        <button type="submit">Generate &amp; Teleport</button>
-      </form>
+      <article class="premium-card">
+        <span class="premium-tag">Premium Plan</span>
+        <h2 id="count-title">Monthly</h2>
+        <p class="price">$3.99<span>/mo</span></p>
+        <p>Unlock all premium features</p>
+        <ul>
+          <li>✓ 250 AI credits per month</li>
+          <li>✓ Unlimited flashcards</li>
+          <li>✓ Multiple choice questions</li>
+          <li>✓ Typing/free-response questions</li>
+          <li>✓ Priority support</li>
+        </ul>
+        <form id="count-form" autocomplete="off">
+          <label for="count-input">How many flashcards? (1-20)</label>
+          <input id="count-input" type="number" min="1" max="20" required />
+          <button type="submit">Upgrade to Premium</button>
+        </form>
+        <p id="count-topic-text"></p>
+      </article>
     </section>
 
     <section id="flashcard-screen" class="screen" aria-live="polite">
-      <header>
-        <h2 id="screen-title">Your Flashcards</h2>
-        <p id="progress-text"></p>
-      </header>
+      <article class="study-card">
+        <header class="study-header">
+          <h2 id="screen-title">Photosynthesis</h2>
+          <p id="progress-text"></p>
+        </header>
 
-      <article id="flashcard" class="card" aria-label="Flashcard">
-        <div id="card-front" class="card-face">
-          <h3 id="card-question"></h3>
-          <p class="face-hint">Question side</p>
+        <div class="tab-strip materials-tabs">
+          <span class="active-tab">Flashcards</span>
+          <span>Multiple Choice 🔒</span>
+          <span>Typing Questions 🔒</span>
         </div>
-        <div id="card-back" class="card-face hidden">
-          <h3>Answer</h3>
-          <p id="card-answer"></p>
+
+        <article id="flashcard" class="card" aria-label="Flashcard">
+          <div id="card-front" class="card-face">
+            <p class="face-hint">FRONT</p>
+            <h3 id="card-question"></h3>
+          </div>
+          <div id="card-back" class="card-face hidden">
+            <p class="face-hint">BACK</p>
+            <h3>Answer</h3>
+            <p id="card-answer"></p>
+          </div>
+        </article>
+
+        <button id="flip-btn" type="button">Flip Card</button>
+
+        <div id="finished-state" class="hidden">
+          <h3>You finished the flashcards 🎉</h3>
+          <p>Do you want to run through them again or ask for a new set?</p>
+          <div class="end-actions">
+            <button id="restart-btn" type="button">Go Through Again</button>
+            <button id="new-topic-btn" type="button">Ask for New Ones</button>
+          </div>
         </div>
+
+        <nav class="nav-buttons" aria-label="Flashcard navigation">
+          <button id="back-btn" type="button">◀ Back</button>
+          <button id="next-btn" type="button">Next ▶</button>
+        </nav>
       </article>
-
-      <button id="flip-btn" type="button">Flip Card</button>
-
-      <div id="finished-state" class="hidden">
-        <h3>You finished the flashcards 🎉</h3>
-        <p>Do you want to run through them again or ask for a new set?</p>
-        <div class="end-actions">
-          <button id="restart-btn" type="button">Go Through Again</button>
-          <button id="new-topic-btn" type="button">Ask for New Ones</button>
-        </div>
-      </div>
-
-      <nav class="nav-buttons" aria-label="Flashcard navigation">
-        <button id="back-btn" type="button">◀ Back</button>
-        <button id="next-btn" type="button">Next ▶</button>
-      </nav>
     </section>
   </main>
 
