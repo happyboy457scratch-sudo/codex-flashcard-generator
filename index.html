@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flashcard Teleporter</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <section id="topic-screen" class="screen active" aria-labelledby="topic-title">
+      <h1 id="topic-title">Flashcard Generator</h1>
+      <p>Type a topic below and jump into your flashcards.</p>
+      <form id="topic-form" autocomplete="off">
+        <label for="topic-input" class="visually-hidden">Flashcard topic</label>
+        <input id="topic-input" type="text" placeholder="Try: photosynthesis, WWII, JavaScript arrays..." required />
+        <button type="submit">Generate &amp; Teleport</button>
+      </form>
+    </section>
+
+    <section id="flashcard-screen" class="screen" aria-live="polite">
+      <header>
+        <h2 id="screen-title">Your Flashcards</h2>
+        <p id="progress-text"></p>
+      </header>
+
+      <article id="flashcard" class="card" aria-label="Flashcard">
+        <h3 id="card-question"></h3>
+        <p id="card-answer"></p>
+      </article>
+
+      <div id="finished-state" class="hidden">
+        <h3>You finished the flashcards 🎉</h3>
+        <p>Do you want to run through them again or ask for a new set?</p>
+        <div class="end-actions">
+          <button id="restart-btn" type="button">Go Through Again</button>
+          <button id="new-topic-btn" type="button">Ask for New Ones</button>
+        </div>
+      </div>
+
+      <nav class="nav-buttons" aria-label="Flashcard navigation">
+        <button id="back-btn" type="button">◀ Back</button>
+        <button id="next-btn" type="button">Next ▶</button>
+      </nav>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
