@@ -1,6 +1,9 @@
-const loginForm = document.getElementById('login-form');
-const usernameInput = document.getElementById('username-input');
-const passwordInput = document.getElementById('password-input');
+const emailForm = document.getElementById('email-form');
+const codeForm = document.getElementById('code-form');
+const emailInput = document.getElementById('email-input');
+const codeInput = document.getElementById('code-input');
+const resendCodeBtn = document.getElementById('resend-code-btn');
+const verificationStatus = document.getElementById('verification-status');
 
 const topicForm = document.getElementById('topic-form');
 const countForm = document.getElementById('count-form');
@@ -32,6 +35,9 @@ let flashcards = [];
 let currentIndex = 0;
 let showingFinished = false;
 let isFlipped = false;
+
+let pendingEmail = '';
+let verificationCode = '';
 
 const topicKnowledge = {
   photosynthesis: [
@@ -138,17 +144,50 @@ function hideFinished() {
   nextBtn.disabled = false;
 }
 
-loginForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const username = usernameInput.value.trim();
-  const password = passwordInput.value.trim();
+function generateVerificationCode() {
+  return `${Math.floor(100000 + Math.random() * 900000)}`;
+}
 
-  if (!username || !password) {
+function sendVerificationCode(email) {
+  pendingEmail = email;
+  verificationCode = generateVerificationCode();
+  verificationStatus.textContent = `Verification code sent to ${pendingEmail}. Demo code: ${verificationCode}`;
+  emailForm.classList.add('hidden');
+  codeForm.classList.remove('hidden');
+  codeInput.value = '';
+  codeInput.focus();
+}
+
+emailForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  if (!emailInput.checkValidity()) {
+    emailInput.reportValidity();
     return;
   }
 
+  sendVerificationCode(emailInput.value.trim());
+});
+
+codeForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const attemptedCode = codeInput.value.trim();
+
+  if (attemptedCode !== verificationCode) {
+    codeInput.setCustomValidity('Incorrect code. Please try again.');
+    codeInput.reportValidity();
+    return;
+  }
+
+  codeInput.setCustomValidity('');
+  verificationStatus.textContent = `Email verified for ${pendingEmail}.`;
   showOnlyScreen(topicScreen);
   topicInput.focus();
+});
+
+resendCodeBtn.addEventListener('click', () => {
+  if (!pendingEmail) return;
+  sendVerificationCode(pendingEmail);
 });
 
 topicForm.addEventListener('submit', (event) => {
