@@ -1,9 +1,14 @@
+const loginForm = document.getElementById('login-form');
+const usernameInput = document.getElementById('username-input');
+const passwordInput = document.getElementById('password-input');
+
 const topicForm = document.getElementById('topic-form');
 const countForm = document.getElementById('count-form');
 const topicInput = document.getElementById('topic-input');
 const countInput = document.getElementById('count-input');
 const countTopicText = document.getElementById('count-topic-text');
 
+const loginScreen = document.getElementById('login-screen');
 const topicScreen = document.getElementById('topic-screen');
 const countScreen = document.getElementById('count-screen');
 const flashcardScreen = document.getElementById('flashcard-screen');
@@ -84,6 +89,7 @@ function buildDeck(topic, count) {
 }
 
 function showOnlyScreen(target) {
+  loginScreen.classList.remove('active');
   topicScreen.classList.remove('active');
   countScreen.classList.remove('active');
   flashcardScreen.classList.remove('active');
@@ -131,6 +137,19 @@ function hideFinished() {
   finishedState.classList.add('hidden');
   nextBtn.disabled = false;
 }
+
+loginForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const username = usernameInput.value.trim();
+  const password = passwordInput.value.trim();
+
+  if (!username || !password) {
+    return;
+  }
+
+  showOnlyScreen(topicScreen);
+  topicInput.focus();
+});
 
 topicForm.addEventListener('submit', (event) => {
   event.preventDefault();
