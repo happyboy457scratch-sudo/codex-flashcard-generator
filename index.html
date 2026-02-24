@@ -8,7 +8,21 @@
 </head>
 <body>
   <main>
-    <section id="topic-screen" class="screen active" aria-labelledby="topic-title">
+    <section id="login-screen" class="screen active" aria-labelledby="login-title">
+      <h1 id="login-title">Welcome Back</h1>
+      <p>Log in to generate and study flashcards.</p>
+      <form id="login-form" autocomplete="off">
+        <label for="username-input">Username</label>
+        <input id="username-input" type="text" placeholder="Enter username" required />
+
+        <label for="password-input">Password</label>
+        <input id="password-input" type="password" placeholder="Enter password" required />
+
+        <button type="submit">Log In</button>
+      </form>
+    </section>
+
+    <section id="topic-screen" class="screen" aria-labelledby="topic-title">
       <h1 id="topic-title">Flashcard Generator</h1>
       <p>Type a topic below and jump into your flashcards.</p>
       <form id="topic-form" autocomplete="off">
