@@ -97,6 +97,15 @@ button:disabled {
   justify-content: center;
 }
 
+.card-face {
+  display: block;
+}
+
+.face-hint {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
 #card-question {
   font-size: 1.15rem;
 }
@@ -104,6 +113,11 @@ button:disabled {
 #card-answer {
   color: #d4eade;
   line-height: 1.5;
+}
+
+#flip-btn {
+  margin-top: 0.8rem;
+  width: 100%;
 }
 
 .nav-buttons {
@@ -147,7 +161,8 @@ button:disabled {
     flex-direction: column;
   }
 
-  button {
+  button,
+  input {
     width: 100%;
   }
 }
