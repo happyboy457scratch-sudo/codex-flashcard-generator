@@ -151,10 +151,11 @@ function generateVerificationCode() {
 function sendVerificationCode(email) {
   pendingEmail = email;
   verificationCode = generateVerificationCode();
-  verificationStatus.textContent = `Verification code sent to ${pendingEmail}. Demo code: ${verificationCode}`;
+  verificationStatus.textContent = `Code sent to ${pendingEmail}. Use this demo code: ${verificationCode}`;
   emailForm.classList.add('hidden');
   codeForm.classList.remove('hidden');
   codeInput.value = '';
+  codeInput.setCustomValidity('');
   codeInput.focus();
 }
 
@@ -166,6 +167,7 @@ emailForm.addEventListener('submit', (event) => {
     return;
   }
 
+  verificationStatus.textContent = 'Sending verification code...';
   sendVerificationCode(emailInput.value.trim());
 });
 
@@ -187,7 +189,12 @@ codeForm.addEventListener('submit', (event) => {
 
 resendCodeBtn.addEventListener('click', () => {
   if (!pendingEmail) return;
+  verificationStatus.textContent = 'Sending verification code...';
   sendVerificationCode(pendingEmail);
+});
+
+codeInput.addEventListener('input', () => {
+  codeInput.setCustomValidity('');
 });
 
 topicForm.addEventListener('submit', (event) => {
