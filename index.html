@@ -13,16 +13,13 @@
       <article class="auth-card">
         <h1 class="logo-title"><span class="mint">✧</span> StudySpark</h1>
         <h2 id="login-title">Welcome Back</h2>
-        <p>Log in to access your study materials</p>
+        <p>Enter your email and we'll send a 6-digit verification code.</p>
 
         <form id="email-form" autocomplete="off">
           <label for="email-input">Email</label>
           <input id="email-input" type="email" placeholder="your@email.com" required />
 
-          <label for="password-input">Password</label>
-          <input id="password-input" type="password" placeholder="Enter your password" required />
-
-          <button type="submit">Log In</button>
+          <button type="submit">Send Verification Code</button>
         </form>
 
         <form id="code-form" class="hidden" autocomplete="off">
@@ -35,6 +32,7 @@
         </form>
 
         <p id="verification-status" class="status-message" aria-live="polite"></p>
+        <p class="demo-note">Demo mode: the code appears below after sending.</p>
         <p class="switch-auth">Don't have an account? <span class="mint">Sign up</span></p>
       </article>
     </section>
