@@ -14,6 +14,16 @@
       <form id="topic-form" autocomplete="off">
         <label for="topic-input" class="visually-hidden">Flashcard topic</label>
         <input id="topic-input" type="text" placeholder="Try: photosynthesis, WWII, JavaScript arrays..." required />
+        <button type="submit">Continue</button>
+      </form>
+    </section>
+
+    <section id="count-screen" class="screen" aria-labelledby="count-title">
+      <h2 id="count-title">How many flashcards do you want?</h2>
+      <p id="count-topic-text"></p>
+      <form id="count-form" autocomplete="off">
+        <label for="count-input">Choose an amount from 1 to 20</label>
+        <input id="count-input" type="number" min="1" max="20" required />
         <button type="submit">Generate &amp; Teleport</button>
       </form>
     </section>
@@ -25,9 +35,17 @@
       </header>
 
       <article id="flashcard" class="card" aria-label="Flashcard">
-        <h3 id="card-question"></h3>
-        <p id="card-answer"></p>
+        <div id="card-front" class="card-face">
+          <h3 id="card-question"></h3>
+          <p class="face-hint">Question side</p>
+        </div>
+        <div id="card-back" class="card-face hidden">
+          <h3>Answer</h3>
+          <p id="card-answer"></p>
+        </div>
       </article>
+
+      <button id="flip-btn" type="button">Flip Card</button>
 
       <div id="finished-state" class="hidden">
         <h3>You finished the flashcards 🎉</h3>
