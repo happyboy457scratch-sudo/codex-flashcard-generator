@@ -156,6 +156,7 @@ button:hover { filter: brightness(1.06); }
 
 .switch-auth { text-align: center; margin-top: 1rem; }
 .status-message { color: #8ff2cf; min-height: 1.2rem; }
+.demo-note { color: #8d93a0; font-size: 1.2rem; margin-top: 0.3rem; }
 .mint { color: var(--mint); }
 
 .section-title {
