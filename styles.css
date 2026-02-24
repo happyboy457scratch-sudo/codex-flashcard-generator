@@ -13,40 +13,15 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 68.75%;
+}
+
 body {
   margin: 0;
   font-family: Inter, Arial, Helvetica, sans-serif;
   background: var(--bg);
   color: var(--text);
-}
-
-.browser-chrome {
-  height: 54px;
-  background: #c7c7c9;
-  color: #222;
-  display: grid;
-  place-items: center;
-  font-size: 2rem;
-}
-
-.promo-bar {
-  height: 72px;
-  border-bottom: 1px solid #1a1c22;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  background: #010101;
-  font-size: 2rem;
-  font-weight: 600;
-}
-
-.promo-btn {
-  border: 2px solid #fff;
-  border-radius: 999px;
-  background: transparent;
-  color: #fff;
-  padding: 0.55rem 1.75rem;
 }
 
 .site-header {
