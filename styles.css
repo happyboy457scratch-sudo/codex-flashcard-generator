@@ -24,6 +24,13 @@ body {
   color: var(--text);
 }
 
+/* Safety: ensure removed top promo elements never render */
+.browser-chrome,
+.promo-bar,
+.promo-btn {
+  display: none !important;
+}
+
 .site-header {
   display: flex;
   align-items: center;
